@@ -14,7 +14,7 @@ shout := weft.Pure(func(in plan.Input) string {
 })
 
 p := plan.Plan{Nodes: []plan.Node{
-    {ID: "greet", Activity: plan.EchoName, Args: []string{"hello", "heddle"}},
+    {ID: "greet", Activity: plan.EchoName, Args: []string{"hello", "world"}},
     {ID: "shout", Activity: "Shout", Requires: []plan.NodeID{"greet"}},
 }}
 
@@ -22,7 +22,7 @@ plan.Register(w) // PlanWorkflow and Echo
 w.RegisterActivityWithOptions(shuttle.ArrowAsActivity(shout), activity.RegisterOptions{Name: "Shout"})
 ```
 
-`shout` produces `HELLO HEDDLE`. This code is `TestArrowAsPlanActivity` in `plan_activity_test.go`.
+`shout` produces `HELLO WORLD`. This code is `TestArrowAsPlanActivity` in `plan_activity_test.go`.
 
 Because the activity is an arrow, you can build it with weft combinators: `Pipe3` for parse → call → render, or `Apply` for timeouts and taps. Prefer Temporal's retry policy (the node's `MaxAttempts`) over `weft.WithRetry` for activity-level retries, so each attempt shows up in the history.
 

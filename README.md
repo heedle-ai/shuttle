@@ -1,6 +1,6 @@
 # shuttle
 
-Durable execution for heddle on [Temporal](https://temporal.io).
+Durable execution for heedle-ai on [Temporal](https://temporal.io).
 
 - **`plan`**: a `Plan` is a serializable DAG whose nodes name registered
   Temporal activities. `plan.Workflow` is the one workflow that runs any plan,

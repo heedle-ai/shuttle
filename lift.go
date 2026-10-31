@@ -1,4 +1,4 @@
-// Package shuttle runs heddle computations durably on Temporal.
+// Package shuttle runs heedle-ai computations durably on Temporal.
 //
 // The execution graph lives in package plan: a serializable DAG whose
 // nodes name registered activities, interpreted by plan.Workflow. This

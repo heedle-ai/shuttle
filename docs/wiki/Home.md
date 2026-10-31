@@ -1,4 +1,4 @@
-**shuttle** runs heddle computations durably on [Temporal](https://temporal.io). A computation is a **plan**: a DAG of named activities, stored as plain data. One generic workflow, `plan.Workflow`, can run any plan. Temporal gives you retries, crash recovery and a full event history for free.
+**shuttle** runs heedle-ai computations durably on [Temporal](https://temporal.io). A computation is a **plan**: a DAG of named activities, stored as plain data. One generic workflow, `plan.Workflow`, can run any plan. Temporal gives you retries, crash recovery and a full event history for free.
 
 ```go
 p := plan.Plan{Nodes: []plan.Node{
@@ -17,11 +17,12 @@ p := plan.Plan{Nodes: []plan.Node{
 | `github.com/heedle-ai/shuttle` | `ArrowAsActivity`, which registers a [weft](https://github.com/heedle-ai/weft/wiki) arrow as an activity | Temporal SDK, weft |
 | `examples/echo` | Runnable quickstart | |
 
-## Where shuttle fits in heddle
+## Where shuttle fits in heedle-ai
 
 | Repo | Role |
 |---|---|
 | [weft](https://github.com/heedle-ai/weft/wiki) | Composition algebra: what a step *is* |
+| [draft](https://github.com/heedle-ai/draft/wiki) | Language: s-expressions that compile to shuttle plans |
 | [warp](https://github.com/heedle-ai/warp/wiki) | Content-addressed store: what the system *knows* |
 | **shuttle** | Durable execution: how the work *ran* (this repo) |
 | [drawdown](https://github.com/heedle-ai/drawdown/wiki) | UI for commits, diffs and provenance |

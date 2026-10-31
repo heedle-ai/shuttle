@@ -35,7 +35,7 @@ temporal --version
 shuttle builds against a local checkout of weft until weft is published, so `go.mod` replaces it with `../weft`.
 
 ```bash
-mkdir -p ~/src/heddle && cd ~/src/heddle
+mkdir -p ~/src/heedle-ai && cd ~/src/heedle-ai
 git clone https://github.com/heedle-ai/weft.git
 git clone https://github.com/heedle-ai/shuttle.git
 cd shuttle
@@ -57,7 +57,7 @@ This serves gRPC on `localhost:7233` and the Web UI on http://localhost:8233. It
 Terminal 2:
 
 ```bash
-cd ~/src/heddle/shuttle
+cd ~/src/heedle-ai/shuttle
 go run ./examples/echo
 ```
 

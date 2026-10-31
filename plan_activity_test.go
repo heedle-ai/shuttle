@@ -22,7 +22,7 @@ func TestArrowAsPlanActivity(t *testing.T) {
 	})
 
 	p := plan.Plan{Nodes: []plan.Node{
-		{ID: "greet", Activity: plan.EchoName, Args: []string{"hello", "heddle"}},
+		{ID: "greet", Activity: plan.EchoName, Args: []string{"hello", "world"}},
 		{ID: "shout", Activity: "Shout", Requires: []plan.NodeID{"greet"}},
 	}}
 
@@ -39,7 +39,7 @@ func TestArrowAsPlanActivity(t *testing.T) {
 	if err := env.GetWorkflowResult(&res); err != nil {
 		t.Fatal(err)
 	}
-	if got := res.Outputs["shout"]; got != "HELLO HEDDLE" {
-		t.Fatalf("shout = %q, want %q", got, "HELLO HEDDLE")
+	if got := res.Outputs["shout"]; got != "HELLO WORLD" {
+		t.Fatalf("shout = %q, want %q", got, "HELLO WORLD")
 	}
 }
