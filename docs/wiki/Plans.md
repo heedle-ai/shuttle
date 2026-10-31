@@ -43,7 +43,7 @@ A plan is plain data, not Go closures. Temporal dispatches activities by registe
    }
    ```
 
-   and returns a `string`.
+   and returns a `string`. `Upstream` is a map, so it has no order. A node that joins several branches tells them apart by node ID, and any order it imposes is its own choice.
 4. The first node failure, after its retries are used up, fails the workflow.
 5. `Workflow` returns:
 

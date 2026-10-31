@@ -41,5 +41,5 @@ Because the activity is an arrow, you can build it with weft combinators: `Pipe3
 | Args | Upstream | Output |
 |---|---|---|
 | set | none | args joined with spaces |
-| none | set | upstream outputs, sorted by node ID, joined with spaces |
-| set | set | `args \| upstream` |
+| none | set | non-empty upstream outputs, sorted by node ID **as strings** (`n10` before `n2`), joined with spaces |
+| set | set | `args \| upstream`, with upstream as in the row above |
