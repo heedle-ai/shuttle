@@ -25,7 +25,7 @@ p := plan.Plan{Nodes: []plan.Node{
 | [draft](https://github.com/heedle-ai/draft/wiki) | Language: s-expressions that compile to shuttle plans |
 | [warp](https://github.com/heedle-ai/warp/wiki) | Content-addressed store: what the system *knows* |
 | **shuttle** | Durable execution: how the work *ran* (this repo) |
-| [drawdown](https://github.com/heedle-ai/drawdown/wiki) | Viewing runs and history |
+| [drawdown](https://github.com/heedle-ai/drawdown/wiki) | Web UI: write, run and browse programs and records |
 | [loom](https://github.com/heedle-ai/loom/wiki) | Runs them together: compile, execute, record |
 
 Categorically, a `Plan` is **syntax**: a term built from activity names, with `Requires` edges for composition and independent nodes for parallel products. `plan.Workflow` is one **interpretation** of that syntax as durable Temporal executions.
