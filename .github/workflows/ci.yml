@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-latest]   # Linux amd64, Linux arm64, macOS Apple Silicon
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: shuttle
+      - uses: actions/checkout@v4      # go.mod replaces weft with ../weft
+        with:
+          repository: heedle-ai/weft
+          path: weft
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: shuttle/go.mod
+          cache-dependency-path: shuttle/go.sum
+      - name: gofmt
+        working-directory: shuttle
+        run: test -z "$(gofmt -l .)" || { gofmt -l .; exit 1; }
+      - name: vet
+        working-directory: shuttle
+        run: go vet ./...
+      - name: test
+        working-directory: shuttle
+        run: go test -race ./...
