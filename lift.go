@@ -8,7 +8,7 @@ package shuttle
 import (
 	"context"
 
-	"github.com/heddle/weft"
+	"github.com/heedle-ai/weft"
 )
 
 // ArrowAsActivity adapts a weft.Arrow into the function shape Temporal

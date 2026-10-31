@@ -7,9 +7,9 @@ import (
 	"go.temporal.io/sdk/activity"
 	"go.temporal.io/sdk/testsuite"
 
-	"github.com/heddle/shuttle"
-	"github.com/heddle/shuttle/plan"
-	"github.com/heddle/weft"
+	"github.com/heedle-ai/shuttle"
+	"github.com/heedle-ai/shuttle/plan"
+	"github.com/heedle-ai/weft"
 )
 
 // TestArrowAsPlanActivity is the wiki's "Write your own activity" example:

@@ -21,7 +21,7 @@ import (
 	"go.temporal.io/sdk/client"
 	"go.temporal.io/sdk/worker"
 
-	"github.com/heddle/shuttle/plan"
+	"github.com/heedle-ai/shuttle/plan"
 )
 
 const taskQueue = "shuttle-echo"

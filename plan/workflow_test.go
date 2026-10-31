@@ -7,7 +7,7 @@ import (
 	"go.temporal.io/sdk/activity"
 	"go.temporal.io/sdk/testsuite"
 
-	"github.com/heddle/shuttle/plan"
+	"github.com/heedle-ai/shuttle/plan"
 )
 
 // registerEcho wires the Echo activity into a test environment under its

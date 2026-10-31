@@ -1,9 +1,9 @@
-module github.com/heddle/shuttle
+module github.com/heedle-ai/shuttle
 
 go 1.24.0
 
 require (
-	github.com/heddle/weft v0.0.0
+	github.com/heedle-ai/weft v0.0.0
 	github.com/stretchr/testify v1.10.0
 	go.temporal.io/sdk v1.41.1
 )
@@ -33,5 +33,5 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-// Until github.com/heddle/weft is published, build against the sibling checkout.
-replace github.com/heddle/weft => ../weft
+// Until github.com/heedle-ai/weft is published, build against the sibling checkout.
+replace github.com/heedle-ai/weft => ../weft

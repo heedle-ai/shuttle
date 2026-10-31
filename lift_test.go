@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/heddle/weft"
+	"github.com/heedle-ai/weft"
 )
 
 func TestArrowAsActivity_PreservesBehaviour(t *testing.T) {

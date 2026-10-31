@@ -7,8 +7,8 @@ weft (algebra) → warp (object store) → shuttle (execution) → drawdown (UI)
 
 1. **Keep the wiki current.** Any change that affects how a developer
    installs, builds, tests, uses or understands this repo updates the wiki
-   in the same piece of work: https://github.com/heddle/shuttle/wiki
-   (git: `https://github.com/heddle/shuttle.wiki.git`). Code, README and wiki
+   in the same piece of work: https://github.com/heedle-ai/shuttle/wiki
+   (git: `https://github.com/heedle-ai/shuttle.wiki.git`). Code, README and wiki
    must never disagree. If the wiki can't be updated, say so explicitly.
 2. **Wiki quality bar.** Every command is copy-pasteable and has been run.
    Every code snippet compiles and is checked by a test; prefer quoting a
@@ -29,6 +29,6 @@ weft (algebra) → warp (object store) → shuttle (execution) → drawdown (UI)
   iteration order inside `plan.Workflow`; all of that goes in activities.
 - **Outputs stay small.** Node outputs live in Temporal history; large data
   goes to warp and the node returns its content hash.
-- `go.mod` replaces `github.com/heddle/weft` with `../weft` until weft is
+- `go.mod` replaces `github.com/heedle-ai/weft` with `../weft` until weft is
   published; clone the repos as siblings.
 - `examples/echo` is the wiki's quickstart; its test pins the documented output.

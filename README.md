@@ -26,13 +26,13 @@ run, err := plan.Submit(ctx, c, p, client.StartWorkflowOptions{TaskQueue: "build
 
 Every node input and output is kept in Temporal's workflow history, so outputs
 must stay small. A node that produces something large stores it in
-[warp](https://github.com/heddle/warp) and returns its content hash.
+[warp](https://github.com/heedle-ai/warp) and returns its content hash.
 
 ```bash
 go test -race ./...   # uses Temporal's in-process test suite; no server needed
 ```
 
-During development, `go.mod` points `github.com/heddle/weft` at `../weft`.
+During development, `go.mod` points `github.com/heedle-ai/weft` at `../weft`.
 Remove the `replace` line once weft is published.
 
 ## Provenance

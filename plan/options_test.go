@@ -15,7 +15,7 @@ import (
 	"go.temporal.io/sdk/converter"
 	"go.temporal.io/sdk/testsuite"
 
-	"github.com/heddle/shuttle/plan"
+	"github.com/heedle-ai/shuttle/plan"
 )
 
 func TestOptions_LayeredOverDefaults(t *testing.T) {
@@ -124,7 +124,7 @@ func TestSubmit_RequiresTaskQueue(t *testing.T) {
 // The package's reason to exist: importing it brings in Temporal and the
 // standard library, not the agent package's vendors.
 func TestImportsOnlyTemporal(t *testing.T) {
-	out, err := exec.Command("go", "list", "-deps", "github.com/heddle/shuttle/plan").Output()
+	out, err := exec.Command("go", "list", "-deps", "github.com/heedle-ai/shuttle/plan").Output()
 	if err != nil {
 		t.Skipf("go list: %v", err)
 	}

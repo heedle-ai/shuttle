@@ -5,7 +5,7 @@ import (
 
 	"go.temporal.io/sdk/testsuite"
 
-	"github.com/heddle/shuttle/plan"
+	"github.com/heedle-ai/shuttle/plan"
 )
 
 // TestDemoPlan runs the example's plan in Temporal's in-process test

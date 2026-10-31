@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/heddle/shuttle/plan"
+	"github.com/heedle-ai/shuttle/plan"
 )
 
 func TestPlan_Validate_Empty(t *testing.T) {
