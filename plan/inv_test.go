@@ -1,9 +1,16 @@
 package plan_test
 
 import (
+	"context"
 	"math/rand"
 	"reflect"
+	"sync"
 	"testing"
+	"time"
+
+	"go.temporal.io/sdk/activity"
+	"go.temporal.io/sdk/temporal"
+	"go.temporal.io/sdk/testsuite"
 
 	"github.com/heedle-ai/shuttle/plan"
 )
@@ -32,5 +39,36 @@ func TestInv_LayersIgnoreNodeOrder(t *testing.T) {
 		if err != nil || !reflect.DeepEqual(got, want) {
 			t.Fatalf("order %v gave layers %v, want %v", shuffled, got, want)
 		}
+	}
+}
+
+// TestInv_LayerRunsInParallel: nodes in the same layer run at the same
+// time. Each node waits until all three have started; if the workflow ran
+// them one after another, the first would time out and the plan would fail.
+func TestInv_LayerRunsInParallel(t *testing.T) {
+	var started sync.WaitGroup
+	started.Add(3)
+	all := make(chan struct{})
+	go func() { started.Wait(); close(all) }()
+	barrier := func(ctx context.Context, in plan.Input) (string, error) {
+		started.Done()
+		select {
+		case <-all:
+			return in.NodeID, nil
+		case <-time.After(5 * time.Second):
+			return "", temporal.NewNonRetryableApplicationError("node ran alone: layer not parallel", "Sequential", nil)
+		}
+	}
+	p := plan.Plan{Nodes: []plan.Node{
+		{ID: "a", Activity: "Barrier"}, {ID: "b", Activity: "Barrier"}, {ID: "c", Activity: "Barrier"},
+	}, Defaults: plan.Options{MaxAttempts: 1}}
+
+	var suite testsuite.WorkflowTestSuite
+	env := suite.NewTestWorkflowEnvironment()
+	plan.Register(env)
+	env.RegisterActivityWithOptions(barrier, activity.RegisterOptions{Name: "Barrier"})
+	env.ExecuteWorkflow(plan.WorkflowName, p)
+	if err := env.GetWorkflowError(); err != nil {
+		t.Fatalf("same-layer nodes didn't run in parallel: %v", err)
 	}
 }

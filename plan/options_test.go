@@ -121,16 +121,16 @@ func TestSubmit_RequiresTaskQueue(t *testing.T) {
 	require.ErrorContains(t, err, "client is nil")
 }
 
-// The package's reason to exist: importing it brings in Temporal and the
-// standard library, not the agent package's vendors.
-func TestImportsOnlyTemporal(t *testing.T) {
-	out, err := exec.Command("go", "list", "-deps", "github.com/heedle-ai/shuttle/plan").Output()
-	if err != nil {
-		t.Skipf("go list: %v", err)
-	}
-	for _, dep := range strings.Fields(string(out)) {
-		for _, banned := range []string{"sibyl/agent", "weft", "slack", "sqlite", "prometheus", "anthropic", "otel/exporters"} {
-			require.NotContains(t, dep, banned, "plan imports %s", dep)
+// TestInv_ImportsOnlyTemporal: plan's own imports are an allowlist (a few
+// standard packages and the Temporal SDK), so it can't grow integrations or
+// I/O, and everything it pulls in comes through Temporal's SDK.
+func TestInv_ImportsOnlyTemporal(t *testing.T) {
+	out, err := exec.Command("go", "list", "-f", "{{join .Imports \"\\n\"}}", "github.com/heedle-ai/shuttle/plan").Output()
+	require.NoError(t, err, "go list must work; a guard that can't run must fail, not skip")
+	allowed := map[string]bool{"context": true, "fmt": true, "sort": true, "strings": true, "time": true}
+	for _, imp := range strings.Fields(string(out)) {
+		if !allowed[imp] && !strings.HasPrefix(imp, "go.temporal.io/sdk/") {
+			t.Errorf("plan imports %s; only %v and go.temporal.io/sdk/... are allowed", imp, allowed)
 		}
 	}
 }

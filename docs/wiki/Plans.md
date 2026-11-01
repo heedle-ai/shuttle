@@ -35,7 +35,7 @@ A plan is plain data, not Go closures. Temporal dispatches activities by registe
 
 
 1. `Layers` sorts the nodes into topological layers. Layer 0 is every node with no `Requires`; layer *k* is every node whose dependencies are all in earlier layers. IDs within a layer are sorted, and nodes are always walked in plan order (never a map), so scheduling is deterministic. Temporal's `workflowcheck` analyzer verifies this on every push.
-2. All nodes in a layer are dispatched in parallel. The next layer starts only after **every** node in the current layer finishes.
+2. All nodes in a layer are dispatched in parallel. The next layer starts only after **every** node in the current layer finishes. `TestInv_LayerRunsInParallel` checks this: three nodes each wait until all three have started, so the plan fails if they run one at a time.
 3. Each node receives a `plan.Input`:
 
    ```go
