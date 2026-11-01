@@ -1,7 +1,8 @@
 # shuttle
 
 Durable execution of heedle-ai plans on Temporal. Part of heedle-ai:
-weft (algebra) → draft (language) → shuttle (execution) → warp (object store) → drawdown (UI);
+weft (algebra) → draft (language) → shuttle (execution) → bobbin (runtime) →
+warp (object store) → drawdown (UI);
 loom runs them together.
 
 ## The first rule: reuse, never rewrite
