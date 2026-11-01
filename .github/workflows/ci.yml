@@ -36,3 +36,9 @@ jobs:
       - name: test
         working-directory: shuttle
         run: go test -race ./...
+      - name: invariants
+        working-directory: shuttle
+        run: bash .github/invariants.sh
+      - name: workflowcheck
+        working-directory: shuttle
+        run: go run go.temporal.io/sdk/contrib/tools/workflowcheck@v0.6.0 ./...

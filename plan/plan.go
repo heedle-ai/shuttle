@@ -228,10 +228,12 @@ func (p Plan) Layers() ([][]NodeID, error) {
 	remaining := len(p.Nodes)
 
 	for remaining > 0 {
+		// Walk the nodes in plan order, never a map: workflow code must be
+		// deterministic by construction (Temporal's workflowcheck enforces it).
 		var layer []NodeID
-		for id, deg := range indegree {
-			if deg == 0 && !done[id] {
-				layer = append(layer, id)
+		for _, n := range p.Nodes {
+			if indegree[n.ID] == 0 && !done[n.ID] {
+				layer = append(layer, n.ID)
 			}
 		}
 		if len(layer) == 0 {

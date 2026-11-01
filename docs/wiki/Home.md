@@ -9,6 +9,8 @@ p := plan.Plan{Nodes: []plan.Node{
 }}
 ```
 
+[[/images/layers.svg|alt=How shuttle runs a plan: layer 0 side by side, a barrier, then the join in layer 1]]
+
 ## What's in the module
 
 | Package | Contents | Imports |
@@ -35,6 +37,7 @@ Categorically, a `Plan` is **syntax**: a term built from activity names, with `R
 - [Getting Started](Getting-Started): install Go and Temporal, run the example
 - [Plans](Plans): the data model, the execution rules, options and limits
 - [Writing Activities](Writing-Activities): add your own nodes, including weft arrows
+- [Invariants](Invariants): every guarantee, the test or check that guards it, and the mistake it came from
 - [Contributing](Contributing)
 
 ## Requirements

@@ -4,6 +4,7 @@
 - [Getting Started](Getting-Started)
 - [Plans](Plans)
 - [Writing Activities](Writing-Activities)
+- [Invariants](Invariants)
 - [Contributing](Contributing)
 
 **heedle-ai**
