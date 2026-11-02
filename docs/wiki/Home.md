@@ -29,6 +29,7 @@ p := plan.Plan{Nodes: []plan.Node{
 | **shuttle** | Durable execution: how the work *ran* (this repo) |
 | [bobbin](https://github.com/heedle-ai/bobbin/wiki) | A fresh Podman container per agent step |
 | [reed](https://github.com/heedle-ai/reed/wiki) | A fresh browser per browsing step, reaching only the hosts its program names |
+| [pirn](https://github.com/heedle-ai/pirn/wiki) | Claude for agent steps: answers from the step's inputs, recorded with them |
 | [drawdown](https://github.com/heedle-ai/drawdown/wiki) | Web UI: write, run and browse programs and records |
 | [loom](https://github.com/heedle-ai/loom/wiki) | Runs them together: compile, execute, record |
 
